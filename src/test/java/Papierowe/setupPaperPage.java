@@ -1,10 +1,15 @@
 package Papierowe;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
+
+import java.time.Duration;
 
 public class setupPaperPage{
     private AndroidDriver driver;
@@ -23,24 +28,54 @@ public class setupPaperPage{
         this.driver = driver;
     }
 
+    public void Scroll(){
+
+        int screenWidth = driver.manage().window().getSize().width;
+        int screenHeight = driver.manage().window().getSize().height;
+
+
+        // Wykonaj gest przewinięcia w dół
+
+
+        Duration scrollDuration = Duration.ofMillis(1000); // Czas przewijania
+
+// Wykonaj gest przewinięcia w dół o całą wysokość ekranu
+        TouchAction<?> action = new TouchAction<>(driver);
+        action.press(PointOption.point(screenWidth / 2, screenHeight * 2 / 3))
+                .waitAction(WaitOptions.waitOptions(scrollDuration))
+                .moveTo(PointOption.point(screenWidth / 2, screenHeight * 3 / 4))
+                .release()
+                .perform();
+    }
+
     public void Enterpaper() {
-        driver.findElement(By.id(Uslugi)).click();
-        driver.findElement(By.id(BiletyPapierowe)).click();
-        driver.findElement(By.id(InneBilety)).click();
-        driver.findElement(By.id(GminaWroclaw)).click();
+
+        driver.findElementByAccessibilityId(Uslugi).click();
+        driver.findElementByAccessibilityId(BiletyPapierowe).click();
+        driver.findElementByAccessibilityId(InneBilety).click();
+        driver.findElementByAccessibilityId(GminaWroclaw).click();
+    }
+
+    public void EnterpaperWithScroll() {
+
+        driver.findElementByAccessibilityId(Uslugi).click();
+        driver.findElementByAccessibilityId(BiletyPapierowe).click();
+        driver.findElementByAccessibilityId(InneBilety).click();
+        driver.findElementByAccessibilityId(GminaWroclaw).click();
+
     }
 
     public void Ticket(String ticket){
-        driver.findElement(By.id(ticket)).click();
+        driver.findElementByAccessibilityId(ticket).click();
 
     }
 
     public void AfterPaper() {
-        driver.findElement(By.id(Wybierz)).click();
-        driver.findElement(By.id(PoleNr)).click();
+        driver.findElementByAccessibilityId(Wybierz).click();
+        driver.findElementByXPath(PoleNr).click();
         driver.pressKey(new KeyEvent(AndroidKey.DIGIT_1));
         driver.pressKey(new KeyEvent(AndroidKey.BACK));
-        driver.findElement(By.id(Dalej)).click();
-        driver.findElement(By.id(Drukuj)).click();
+        driver.findElementByAccessibilityId(Dalej).click();
+        driver.findElementByAccessibilityId(Drukuj).click();
     }
 }

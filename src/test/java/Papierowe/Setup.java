@@ -12,15 +12,16 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Setup {
-    public AndroidDriver driver;
 
-    @BeforeMethod
-    public void setupAppium() throws MalformedURLException {
+        public AndroidDriver driver;
 
-        this.driver = driver;
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "PAX A80");
-        AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub/"), capabilities);
-        driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        @BeforeMethod
+        public void setupAppium() throws MalformedURLException {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "PAX A80");
+            this.driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub/"), capabilities);
+            this.driver.manage().timeouts().implicitlyWait(20L, TimeUnit.SECONDS);
+        }
     }
-}
+
+

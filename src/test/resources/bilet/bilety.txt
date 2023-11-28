@@ -1,0 +1,31 @@
+1R nor.MP
+1R ulg.MP
+15-min.w.l. N
+15-min.w.l. U
+30-min.w.l. N
+30-min.w.l. U
+60-min.w.l. N
+60-min.w.l. U
+90-min.w.l. N
+90-min.w.l. U
+24-godz.w.l. N
+24-godz.w.l. U
+48-godz.w.l. N
+48-godz.w.l. U
+72-godz.w.l. N
+72-godz.w.l. U
+168-godz.w.l. N
+168-godz.w.l. U
+Grp15.w.l. N
+Grp15.w.l. U
+DO 1R 0.5zl
+DO 1R 1.2zl
+DO 1R 4zl
+DO 1R 6zl
+DO 1R 8zl
+DO 1R 0.6zl
+DO 1R 0.4zl
+DO 1R 0.8zl
+DO 1R 1zl
+DO 1R 3zl
+DO 1R 2zl

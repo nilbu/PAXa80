@@ -23,6 +23,8 @@ public class setupPaperPage{
     private String PoleNr = "//android.view.View.VirtualChild[4]";
     private String Dalej = "Dalej";
     private String Drukuj = "Drukuj";
+    private String Wydrukuj = "Wydrukuj";
+
 
     public  setupPaperPage (AndroidDriver driver){
         this.driver = driver;
@@ -48,10 +50,17 @@ public class setupPaperPage{
                 .perform();
     }
 
+    public void tap(int x, int y) {
+
+        TouchAction touchAction = new TouchAction(driver);
+        touchAction.tap(PointOption.point(x, y)).perform();
+    }
+
     public void Enterpaper() {
 
         driver.findElementByAccessibilityId(Uslugi).click();
-        driver.findElementByAccessibilityId(BiletyPapierowe).click();
+        tap(230, 230);
+       // driver.findElementByAccessibilityId(BiletyPapierowe).click();
         driver.findElementByAccessibilityId(InneBilety).click();
         driver.findElementByAccessibilityId(GminaWroclaw).click();
     }
@@ -77,5 +86,7 @@ public class setupPaperPage{
         driver.pressKey(new KeyEvent(AndroidKey.BACK));
         driver.findElementByAccessibilityId(Dalej).click();
         driver.findElementByAccessibilityId(Drukuj).click();
+        driver.findElementByAccessibilityId(Wydrukuj).click();
+
     }
 }
